@@ -1,0 +1,27 @@
+The code is a Python script that generates a web application using Streamlit. The application retrieves data from a SQL Server database, displays the data in tables, and refreshes the data every 30 seconds. Below is a step-by-step breakdown of the code:
+
+    The necessary libraries are imported. Pyodbc is used for connecting to SQL Server, Pandas is used for data manipulation, and Streamlit is used for creating the web application.
+
+    The connection string to the SQL Server database is defined.
+
+    The Streamlit page configuration is set. The page title is "Box Despatch Summary", the page icon is "📦", the layout is "wide", and the initial sidebar state is "collapsed".
+
+    The font and layout size of the page is set using Markdown.
+
+    The user is allowed to select a date using the Streamlit date_input function. The default value for the date is set to today's date.
+
+    Two Streamlit "empty" elements are created to hold the Box Despatch Summary and Despatch Yield tables. These elements will be used later to display the tables.
+
+    A while loop is started that will continuously run until the script is stopped.
+
+    Inside the while loop, data is retrieved from the rep_BoxDespatchSummary and usr_DespatchYield tables in the SQL Server database for the selected date. The data is retrieved using two custom classes: BoxDespatchSummary and DespatchYield.
+
+    The retrieved data is stored in Pandas dataframes (df1 and df2).
+
+    If data is found for Box Despatch Summary, the data is displayed in a Streamlit dataframe using the box_summary_element. If no data is found, a message is displayed instead.
+
+    If data is found for Despatch Yield, the data is displayed in a Streamlit dataframe using the despatch_yield_element. If no data is found, a message is displayed instead.
+
+    The script waits for 30 seconds before running the loop again.
+
+In summary, this code generates a simple web application that retrieves and displays data from a SQL Server database using Streamlit and Pandas. The data is refreshed every 30 seconds.
