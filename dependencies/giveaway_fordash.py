@@ -64,7 +64,12 @@ class Giveaway:
             df['Actual_Out_Kgs'] = df.apply(self.adjust_total_cuts, axis=1)
             df['Giveaway'] = df.apply(self.calculate_percentage, axis=1)
             df = df.style.applymap(self.color_negative_red, subset=['Giveaway'])
-           
+            # Apply styling to the dataframe using pandas
+            
+            
+
+            # Return the styled dataframe
             return df
+
         else:
             return None

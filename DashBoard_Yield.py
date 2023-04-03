@@ -1,15 +1,13 @@
-#Added a drop down selection to choose table. 
-
 import pyodbc
 import datetime
 import pandas as pd
 import numpy as np
 import streamlit as st
 import time
-from database_connector import DatabaseConnector
-from box_despatch_summary import BoxDespatchSummary
-from despatch_yield import DespatchYield
-from giveaway_fordash import Giveaway
+from dependencies.database_connector import DatabaseConnector
+from dependencies.box_despatch_summary import BoxDespatchSummary
+from dependencies.despatch_yield import DespatchYield
+from dependencies.giveaway_fordash import Giveaway
 
 connection_string = 'Driver={SQL Server};Server=172.20.2.4\mssql;Database=AMPSWDCPAC;Uid=rohit.avadhani;Pwd=Avadro.!994;'
 
@@ -18,7 +16,7 @@ st.set_page_config(
     page_title="Box Despatch Summary",
     page_icon="📦",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 # Set the font and layout size
@@ -26,7 +24,7 @@ st.set_page_config(
 st.markdown("""
     <style>
     table {
-        font-size: 48px;
+        font-size: 200px;
         text-align: center;
     }
     </style>
@@ -62,7 +60,8 @@ while True:
     if df is not None:
         with table_element:
             st.subheader(selected_table)
-            st.dataframe(df)
+            styled_df = df.set_properties(**{'font-size': '48px', 'text-align': 'center'})
+            st.dataframe(styled_df,width= 2000)
     else:
         with table_element:
             st.write(f"No data found for {selected_table}")
