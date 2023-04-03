@@ -25,13 +25,9 @@ st.set_page_config(
 # Set the font and layout size
 st.markdown("""
     <style>
-    body {
-        font-family: Arial, sans-serif;
+    table {
         font-size: 48px;
-        line-height: 1.8;
-    }
-    table.dataframe {
-        width: 100%;
+        text-align: center;
     }
     </style>
     """, unsafe_allow_html=True)
