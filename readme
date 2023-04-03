@@ -1,27 +1,54 @@
-The code is a Python script that generates a web application using Streamlit. The application retrieves data from a SQL Server database, displays the data in tables, and refreshes the data every 30 seconds. Below is a step-by-step breakdown of the code:
+The connection string to the database is provided, along with Streamlit configuration settings to set the page title, page icon, layout, sidebar state, and font and layout size. The app allows the user to select a date and a table from a dropdown menu, and retrieves data from the selected table for the selected date using the appropriate class from the custom modules. The retrieved data is displayed in a DataFrame using Streamlit.
 
-    The necessary libraries are imported. Pyodbc is used for connecting to SQL Server, Pandas is used for data manipulation, and Streamlit is used for creating the web application.
+Here's a possible documentation for this code:
+Project Name
 
-    The connection string to the SQL Server database is defined.
+Box Despatch Summary Streamlit App
+Description
 
-    The Streamlit page configuration is set. The page title is "Box Despatch Summary", the page icon is "📦", the layout is "wide", and the initial sidebar state is "collapsed".
+This is a Streamlit app that connects to a SQL Server database and displays data from the Box Despatch Summary, Despatch Yield, or Giveaway Yield table for a selected delivery/weigh date.
+Dependencies
 
-    The font and layout size of the page is set using Markdown.
+This project relies on the following dependencies:
 
-    The user is allowed to select a date using the Streamlit date_input function. The default value for the date is set to today's date.
+    pyodbc
+    datetime
+    pandas
+    numpy
+    streamlit
+    dependencies.database_connector.DatabaseConnector
+    dependencies.box_despatch_summary.BoxDespatchSummary
+    dependencies.despatch_yield.DespatchYield
+    dependencies.giveaway_fordash.Giveaway
 
-    Two Streamlit "empty" elements are created to hold the Box Despatch Summary and Despatch Yield tables. These elements will be used later to display the tables.
+Installation
 
-    A while loop is started that will continuously run until the script is stopped.
+To install the dependencies, you can use pip:
 
-    Inside the while loop, data is retrieved from the rep_BoxDespatchSummary and usr_DespatchYield tables in the SQL Server database for the selected date. The data is retrieved using two custom classes: BoxDespatchSummary and DespatchYield.
+pip install pyodbc datetime pandas numpy streamlit
 
-    The retrieved data is stored in Pandas dataframes (df1 and df2).
+Usage
 
-    If data is found for Box Despatch Summary, the data is displayed in a Streamlit dataframe using the box_summary_element. If no data is found, a message is displayed instead.
+To run the Streamlit app, open the command prompt, navigate to the project directory, and type:
 
-    If data is found for Despatch Yield, the data is displayed in a Streamlit dataframe using the despatch_yield_element. If no data is found, a message is displayed instead.
+arduino
 
-    The script waits for 30 seconds before running the loop again.
+streamlit run app.py
 
-In summary, this code generates a simple web application that retrieves and displays data from a SQL Server database using Streamlit and Pandas. The data is refreshed every 30 seconds.
+The app will launch in your web browser. Use the date input widget to select a delivery/weigh date, and use the dropdown menu to select a table. The app will retrieve data from the selected table for the selected date and display it in a DataFrame.
+Examples
+
+Here are some examples of how to use the app:
+
+    To view the Box Despatch Summary for today, select "Box Despatch Summary" from the dropdown menu, and leave the date input widget at its default value.
+    To view the Despatch Yield for yesterday, select "Despatch Yield" from the dropdown menu, and change the date input widget to yesterday's date.
+    To view the Giveaway Yield for a specific date, select "Giveaway Yield" from the dropdown menu, and choose the desired date using the date input widget.
+
+Troubleshooting
+
+    If you encounter any issues with the connection to the SQL Server database, check the connection string in the code and make sure it is correct.
+    If you encounter any issues with the custom modules from the dependencies folder, make sure they are installed and imported correctly.
+
+Conclusion
+
+This Streamlit app provides an easy-to-use interface for viewing data from the Box Despatch Summary, Despatch Yield, and Giveaway Yield tables in a SQL Server database. By selecting a delivery/weigh date and a table, users can quickly retrieve and analyze relevant data.
