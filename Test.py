@@ -1,5 +1,3 @@
-#Added a drop down selection to choose table. 
-
 import pyodbc
 import datetime
 import pandas as pd
@@ -26,12 +24,8 @@ st.markdown("""
     <style>
     body {
         font-family: Arial, sans-serif;
-        font-size: 48px;
+        font-size: 20px;
         line-height: 1.8;
-    }
-    table.dataframe {
-        height: 80vh;
-        width: 100vw;
     }
     </style>
     """, unsafe_allow_html=True)
