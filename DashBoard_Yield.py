@@ -35,8 +35,8 @@ date = st.date_input("Select a date", datetime.date.today(), key='date_input')
 
 # Allow the user to select a table
 # Add the table options 
-#table_options = ['Box Despatch Summary', 'Despatch Yield', 'Giveaway Yield']
-table_options = ['Giveaway Yield']
+table_options = ['Box Despatch Summary', 'Despatch Yield', 'Giveaway Yield']
+#table_options = ['Giveaway Yield']
 #Lets you add a selcet criteria for the tables
 selected_table = st.selectbox('Select a table', table_options)
 
@@ -60,8 +60,8 @@ while True:
     if df is not None:
         with table_element:
             st.subheader(selected_table)
-            styled_df = df.set_properties(**{'font-size': '48px', 'text-align': 'center'})
-            st.dataframe(styled_df,width= 2000)
+            
+            st.dataframe(df,width= 2000,height=300)
     else:
         with table_element:
             st.write(f"No data found for {selected_table}")
