@@ -22,19 +22,21 @@ st.set_page_config(
 )
 
 # Set the font and layout size
+# Set the font and layout size
 st.markdown("""
     <style>
     body {
         font-family: Arial, sans-serif;
-        font-size: 200px !important;
+        font-size: 48px;
         line-height: 1.8;
     }
     table.dataframe {
-        font-size: 200px;
-        width: 100% !important;
+        width: 100%;
     }
     </style>
     """, unsafe_allow_html=True)
+
+
 
 
 # Allow the user to select a delivery/weigh date
