@@ -26,22 +26,24 @@ st.markdown("""
     <style>
     body {
         font-family: Arial, sans-serif;
-        font-size: 48px;
+        font-size: 200px !important;
         line-height: 1.8;
     }
     table.dataframe {
-        height: 80vh;
-        width: 100vw;
+        font-size: 200px;
+        width: 100% !important;
     }
     </style>
     """, unsafe_allow_html=True)
+
 
 # Allow the user to select a delivery/weigh date
 date = st.date_input("Select a date", datetime.date.today(), key='date_input')
 
 # Allow the user to select a table
-
-table_options = ['Box Despatch Summary', 'Despatch Yield', 'Giveaway Yield']
+# Add the table options 
+#table_options = ['Box Despatch Summary', 'Despatch Yield', 'Giveaway Yield']
+table_options = ['Giveaway Yield']
 #Lets you add a selcet criteria for the tables
 selected_table = st.selectbox('Select a table', table_options)
 
