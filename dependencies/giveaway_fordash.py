@@ -10,6 +10,7 @@ class Giveaway:
    # Multiply the out cuts with the actual weight we need per primal
     def adjust_total_cuts(self, row):
         product_name = row['ProductName']
+        product_number = row['ProductNo']
         total_cuts = row['TotalCuts']
         if '255G' in product_name:
             return total_cuts * 0.255
@@ -21,6 +22,8 @@ class Giveaway:
             return total_cuts * 0.454
         elif '200G' in product_name:
             return total_cuts * 0.200
+        elif '2478' in product_number:
+            return total_cuts * 0.900
         else:
             return total_cuts
 
@@ -46,9 +49,9 @@ class Giveaway:
                 FROM rep_HourlyBoxingReportSummary
                 WHERE 
                     WeighDate = '{self.weigh_date}' AND 
-                    Line = '606' AND
+                    Line IN ('602', '606') AND
                     ProductName != 'WEIGHT CHECK' AND
-                    ProductNo IN ('2206','2226','2387','2393','2388','2394','2389','2395','1707','2779','2775','2776','2777','2478')
+                    ProductNo IN ('2206','2478','2226','2387','2393','2388','2394','2389','2395','1707','2779','2775','2776','2777','2478')
                 GROUP BY REPLACE(ProductNo, ',', ''), ProductName
             """
             cursor = connection.cursor()

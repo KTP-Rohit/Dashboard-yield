@@ -61,7 +61,7 @@ while True:
         with table_element:
             st.subheader(selected_table)
             
-            st.dataframe(df,width= 2000,height=300)
+            st.dataframe(df,width= 2000,height=500)
     else:
         with table_element:
             st.write(f"No data found for {selected_table}")
