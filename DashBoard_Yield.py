@@ -32,9 +32,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-
-
-
 # Allow the user to select a delivery/weigh date
 date = st.date_input("Select a date", datetime.date.today(), key='date_input')
 
