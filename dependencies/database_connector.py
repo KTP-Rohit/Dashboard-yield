@@ -1,4 +1,5 @@
 import pyodbc
+connection_string = 'Driver={SQL Server};Server=172.20.2.4\mssql;Database=AMPSWDCPAC;Uid=rohit.avadhani;Pwd=Avadro.!994;'
 class DatabaseConnector:
     def __init__(self, connection_string):
         self.connection_string = connection_string

@@ -1,5 +1,6 @@
 import pyodbc
 import pandas as pd
+from dependencies.database_connector import connection_string
 
 
 class DespatchYield:
@@ -50,6 +51,8 @@ class DespatchYield:
         if len(rows) > 0:
             df = pd.DataFrame.from_records(rows, columns=columns)
             df["BatchNo"] = df["BatchNo"].apply(lambda x: "{:.0f}".format(x))
+            df = df[~df['ProductName'].str.contains('VL')]
+
             
 
             return df

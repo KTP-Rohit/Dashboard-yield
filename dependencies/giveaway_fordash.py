@@ -14,10 +14,11 @@ class Giveaway:
         total_cuts = row['TotalCuts']
         if '255G' in product_name:
             return total_cuts * 0.255
-        elif 'FILLET' in product_name and '200G' not in product_name:
+        elif 'FILLET' in product_name and '200G' not in product_name and '340G' not in product_name:
             return total_cuts * 0.170
-        elif '340G' in product_name:
+        elif 'FILLET' in product_name and '340G'  in product_name:
             return total_cuts * 0.340
+        
         elif '454G' in product_name:
             return total_cuts * 0.454
         elif '200G' in product_name:

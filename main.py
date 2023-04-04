@@ -4,64 +4,66 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import time
-from dependencies.database_connector import DatabaseConnector
+from dependencies.database_connector import connection_string
 from dependencies.box_despatch_summary import BoxDespatchSummary
 from dependencies.despatch_yield import DespatchYield
 from dependencies.giveaway_fordash import Giveaway
+from Primal_cuts import PrimalCuts
 
-connection_string = 'Driver={SQL Server};Server=172.20.2.4\mssql;Database=AMPSWDCPAC;Uid=rohit.avadhani;Pwd=Avadro.!994;'
 
 # Set the page configuration
 st.set_page_config(
-    page_title="Box Despatch Summary",
-    page_icon="📦",
+    page_title="Yield Dashboard",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 # Set the font and layout size
-# Set the font and layout size
 st.markdown("""
     <style>
     table {
-        font-size: 200px;
+        font-size: 1em;
         text-align: center;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# Allow the user to select a delivery/weigh date
+# Allow the user to select a date
 date = st.date_input("Select a date", datetime.date.today(), key='date_input')
 
 # Allow the user to select a table
-# Add the table options 
-table_options = ['Box Despatch Summary', 'Despatch Yield', 'Giveaway Yield']
-#table_options = ['Giveaway Yield']
-#Lets you add a selcet criteria for the tables
+table_options = ['Giveaway Yield', 'Primal Cuts']
 selected_table = st.selectbox('Select a table', table_options)
 
-# Initiate empty element
+# Create an empty placeholder element
 table_element = st.empty()
 
+# Add a checkbox to allow user to manually refresh data
+manual_refresh = st.checkbox('Manual Refresh', key='manual_refresh')
+
 while True:
-    # Retrieve data from the selected table for the selected delivery/weigh date
-    # Change made on this line: 28
+    # Retrieve data from the selected table for the selected date
     if selected_table == 'Box Despatch Summary':
-        table = BoxDespatchSummary(date.strftime('%Y-%m-%d'),connection_string)
+        table = BoxDespatchSummary(delivery_date=date.strftime('%Y-%m-%d'), connection_string=connection_string)
         df = table.get_data()
     elif selected_table == 'Despatch Yield':
-        table = DespatchYield(date.strftime('%Y-%m-%d'),connection_string)
+        table = DespatchYield(weigh_date=date.strftime('%Y-%m-%d'), connection_string=connection_string)
         df = table.get_data()
+        # Filter out rows with 'VL' in the ProductName column
+        df = df[~df['ProductName'].str.contains('VL', na=False)]
     elif selected_table == 'Giveaway Yield':
-        table = Giveaway(date.strftime('%Y-%m-%d'),connection_string)
+        table = Giveaway(date.strftime('%Y-%m-%d'), connection_string=connection_string)
+        df = table.get_data()
+    elif selected_table == 'Primal Cuts':
+        table = PrimalCuts(date.strftime('%Y-%m-%d'), connection_string=connection_string)
         df = table.get_data()
 
     # Display the DataFrame using Streamlit
     if df is not None:
         with table_element:
             st.subheader(selected_table)
-            
-            st.dataframe(df,width= 2000,height=500)
+            st.dataframe(df, width=2000, height=500)
     else:
         with table_element:
             st.write(f"No data found for {selected_table}")
