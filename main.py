@@ -29,11 +29,15 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+
+#Adding Title
+# Set the page title
+st.title("Yield and Giveaway Dashs")
 # Allow the user to select a date
 date = st.date_input("Select a date", datetime.date.today(), key='date_input')
 
 # Allow the user to select a table
-table_options = ['Giveaway Yield', 'Primal Cuts']
+table_options = ['Box Despatch Summary', 'Despatch Yield', 'Giveaway Yield', 'Primal Cuts']
 selected_table = st.selectbox('Select a table', table_options)
 
 # Create an empty placeholder element

@@ -36,8 +36,9 @@ class PrimalCuts:
         
         # Multiply cuts by factor based on product name
         merged_df.loc[merged_df['ProductName'].str.contains('X2'), 'Adjusted_Kgs'] *= 2
-        merged_df.loc[merged_df['ProductName'].str.contains('X4'), 'Adjusted_Kgs'] *= 4
-        merged_df = merged_df[merged_df['Cuts1'] >= 10]
+        merged_df.loc[merged_df['ProductName'].str.contains('X 2'), 'Adjusted_Kgs'] *= 2
+        merged_df.loc[merged_df['ProductName'].str.contains('X 4'), 'Adjusted_Kgs'] *= 4
+        merged_df = merged_df[merged_df['Cuts1'] >= 30]
         merged_df['primal_yield'] = 100 - (((merged_df['Adjusted_Kgs'].astype(float) - merged_df['Kgs'].astype(float)) / merged_df['Adjusted_Kgs'].astype(float)))*100
         merged_df = merged_df.style.applymap(self.color_negative_red, subset=['primal_yield'])
 

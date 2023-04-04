@@ -18,19 +18,19 @@ class BoxDespatchSummary:
                     SUM(Cuts1) AS TotalPrimalsIn, SUM(Kgs) AS TotalKgs,
                     CASE WHEN SUM(Cuts1) = 0 THEN NULL ELSE SUM(Kgs)/SUM(Cuts1) END AS KgsPerPrimal,
                     CASE 
-                        WHEN ProductNo IN (2770, 2771, 2850, 2422, 2423, 2420, 2421) THEN 10 
+                        WHEN ProductNo IN (2770, 2771, 2850, 2422, 2423, 2420, 2421) THEN 15 
                         WHEN ProductNo IN (2772, 2223, 2203) THEN 20
-                        WHEN ProductNo IN (2530) THEN 5
-                        WHEN ProductNo IN (2531) THEN 8
+                        WHEN ProductNo IN (2530) THEN 20
+                        WHEN ProductNo IN (2531) THEN 28
                         WHEN ProductNo IN (2774, 2221, 2201) THEN 10
                         WHEN ProductNo IN (2773, 2222, 2202) THEN 10
                         ELSE NULL
                     END AS CutsPerPrimal,
                     CASE WHEN SUM(Cuts1) = 0 THEN NULL ELSE SUM(Kgs)/SUM(Cuts1) END / 
                         CASE 
-                            WHEN ProductNo IN (2770, 2771, 2850, 2422, 2423, 2420, 2421) THEN 10
-                            WHEN ProductNo IN (2530) THEN 5
-                            WHEN ProductNo IN (2531) THEN 8 
+                            WHEN ProductNo IN (2770, 2771, 2850, 2422, 2423, 2420, 2421) THEN 15
+                            WHEN ProductNo IN (2530) THEN 20
+                            WHEN ProductNo IN (2531) THEN 28
                             WHEN ProductNo IN (2772, 2223, 2203) THEN 20
                             WHEN ProductNo IN (2774, 2221, 2201) THEN 10
                             WHEN ProductNo IN (2773, 2222, 2202) THEN 10
