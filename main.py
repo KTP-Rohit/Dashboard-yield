@@ -22,8 +22,8 @@ st.set_page_config(
 # Set the font and layout size
 st.markdown("""
     <style>
-    table {
-        font-size: 1em;
+    body {
+        font-size: 0.2em;
         text-align: center;
     }
     </style>
@@ -63,14 +63,21 @@ while True:
         table = PrimalCuts(date.strftime('%Y-%m-%d'), connection_string=connection_string)
         df = table.get_data()
 
-    # Display the DataFrame using Streamlit
+   # Set the font size
+    font_size = 20
+
     if df is not None:
         with table_element:
             st.subheader(selected_table)
+            # Apply a custom CSS style to the subheader element
+            st.markdown(f"<p style='font-size:{font_size}px'>{selected_table}</p>", unsafe_allow_html=True)
             st.dataframe(df, width=2000, height=500)
     else:
         with table_element:
             st.write(f"No data found for {selected_table}")
+            # Apply a custom CSS style to the write element
+            st.markdown(f"<p style='font-size:{font_size}px'>No data found for {selected_table}</p>", unsafe_allow_html=True)
+
 
     # Wait for 30 seconds before getting the latest data again
     time.sleep(30)
