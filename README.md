@@ -25,29 +25,29 @@ Installation
 
 To install the dependencies, you can use pip:
 
-pip install pyodbc datetime pandas numpy streamlit
+    pip install pyodbc datetime pandas numpy streamlit
 
 Usage
 
 To run the Streamlit app, open the command prompt, navigate to the project directory, and type:
 
-arduino
 
-streamlit run app.py
+    
+    streamlit run app.py
 
 The app will launch in your web browser. Use the date input widget to select a delivery/weigh date, and use the dropdown menu to select a table. The app will retrieve data from the selected table for the selected date and display it in a DataFrame.
 Examples
 
 Here are some examples of how to use the app:
 
-    To view the Box Despatch Summary for today, select "Box Despatch Summary" from the dropdown menu, and leave the date input widget at its default value.
-    To view the Despatch Yield for yesterday, select "Despatch Yield" from the dropdown menu, and change the date input widget to yesterday's date.
-    To view the Giveaway Yield for a specific date, select "Giveaway Yield" from the dropdown menu, and choose the desired date using the date input widget.
+To view the Box Despatch Summary for today, select "Box Despatch Summary" from the dropdown menu, and leave the date input widget at its default value.
+To view the Despatch Yield for yesterday, select "Despatch Yield" from the dropdown menu, and change the date input widget to yesterday's date.
+To view the Giveaway Yield for a specific date, select "Giveaway Yield" from the dropdown menu, and choose the desired date using the date input widget.
 
 Troubleshooting
 
-    If you encounter any issues with the connection to the SQL Server database, check the connection string in the code and make sure it is correct.
-    If you encounter any issues with the custom modules from the dependencies folder, make sure they are installed and imported correctly.
+If you encounter any issues with the connection to the SQL Server database, check the connection string in the code and make sure it is correct.
+If you encounter any issues with the custom modules from the dependencies folder, make sure they are installed and imported correctly.
 
 Conclusion
 
