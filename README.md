@@ -1,10 +1,10 @@
 The connection string to the database is provided, along with Streamlit configuration settings to set the page title, page icon, layout, sidebar state, and font and layout size. The app allows the user to select a date and a table from a dropdown menu, and retrieves data from the selected table for the selected date using the appropriate class from the custom modules. The retrieved data is displayed in a DataFrame using Streamlit.
 
 Here's a possible documentation for this code:
-Project Name
 
-Box Despatch Summary Streamlit App
-Description
+
+#Box Despatch Summary Streamlit App
+
 
 This is a Streamlit app that connects to a SQL Server database and displays data from the Box Despatch Summary, Despatch Yield, or Giveaway Yield table for a selected delivery/weigh date.
 Dependencies
